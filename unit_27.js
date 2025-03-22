@@ -35,6 +35,7 @@ function rejectError(err) {
 
 function resolveF1(data) {
     console.log(data);
+    document.querySelector('.out-1').innerHTML = p['random-number'] > 50
     // тут допишите необходимый вывод 
 }
 
