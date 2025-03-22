@@ -50,17 +50,8 @@ document.querySelector('.b-1').addEventListener('click', f1);
 // функция resolveF2 должна выводить в .out-2 полученную случайную строку.
 
 
-function f2() {
-    const p = new Promise((resole,reject) => {
-        fetch(URL + '/api/27/random/random-string', {
-                             'headers' : {
-                                'apikey' : APIKEY,
-                             }
-             .then(response => {
-                if(response.ok) resolve(response.json())
-             })                
-        })
-    })
+ async function  f2() {
+
 }
 
 function resolveF2(data) {
