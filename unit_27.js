@@ -16,7 +16,8 @@ function f1() {
 
     const p = new Promise((resolve, reject) =>  {
         fetch(URL +'/api/27/random/random-number', { 
-            headers: requestHeaders
+            headers: requestHeaders,
+            method : 'GET',
         })
         .then(response => {
             if (response.ok) resolve(response.json());
