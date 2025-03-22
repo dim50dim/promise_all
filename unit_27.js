@@ -35,7 +35,7 @@ function rejectError(err) {
 
 function resolveF1(data) {
     console.log(data);
-
+document.querySelector('.out-1').innerHTML = data['random-number'] >  50;
     // тут допишите необходимый вывод 
 }
 
@@ -50,7 +50,7 @@ document.querySelector('.b-1').addEventListener('click', f1);
 // функция resolveF2 должна выводить в .out-2 полученную случайную строку.
 
 
- async function  f2() {
+  function  f2() {
 
 }
 
