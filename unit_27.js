@@ -51,7 +51,9 @@ document.querySelector('.b-1').addEventListener('click', f1);
 
 
 function f2() {
-  
+    const p = new Promise((response,reject) => {
+        fetch
+    })
 }
 
 function resolveF2(data) {
