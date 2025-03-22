@@ -52,19 +52,32 @@ document.querySelector('.b-1').addEventListener('click', f1);
 
 
   function  f2() {
-   const p = new Promise((resolve,reject) => {
-    fetch(URL + '/api/27/random/random-string', {
-                        'method' : 'GET',
-                        'headers' : {
-                            'apikey' : APIKEY,
-               }                
-                      
-    })
-   })
+    const requestHeaders = new Headers();
+    requestHeaders.append("apikey", APIKEY);
+
+    const p = new Promise((resolve, reject) =>  {
+        fetch(URL +'/api/27/random/random-string', { 
+            headers: requestHeaders,
+            method : 'GET',
+        })
+        .then(response => {
+            if (response.ok) resolve(response.json());
+            else reject(response)
+        })
+        .catch(error => reject(error));
+    });
+
+    p.then(resolveF1, rejectError);
 }
 
-function resolveF2(data) {
+function rejectError(err) {
+    console.log('Houston, We Have a Problem!');
+    console.log(err);
+}
+
+function resolveF1(data) {
     console.log(data);
+document.querySelector('.out-2').innerHTML = data['random-string'];
 }
 
 document.querySelector('.b-2').onclick = f2;
@@ -99,7 +112,7 @@ function f3(){
          .then(response => response.json())
          .then(data => {
             console.log(data);
-            // допишите вывод
+           document.querySelector('.out-3').innerHTML = data.result.name;
          });
 }
 
