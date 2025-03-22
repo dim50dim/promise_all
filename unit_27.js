@@ -169,20 +169,22 @@ function f5(){
     requestHeaders.append("apikey", APIKEY);
 
     fetch(URL + '/api/27/gow/random-world', {
-        headers: requestHeaders
+        headers: requestHeaders,
+        method : 'POST'
     })
         .then(response => response.json())
         .then(data => {
             console.log(data);
             randomWorld = data['governor'];
             return  fetch(URL + '/api/27/gow/world/' + randomWorld, {
-                headers: requestHeaders
+                headers: requestHeaders,
+                method : 'GET'
             });
          })
          .then(response => response.json())
          .then(data => {
             console.log(data);
-           document.querySelector('.out-5').innerHTML = data.result.name;
+           document.querySelector('.out-5').innerHTML = data.result;
          });
 }
 
