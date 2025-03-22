@@ -52,7 +52,15 @@ document.querySelector('.b-1').addEventListener('click', f1);
 
 
   function  f2() {
-
+   const p = new Promise((resolve,reject) => {
+    fetch(URL + '/api/27/random/random-string', {
+                        'method' : 'GET',
+                        'headers' : {
+                            'apikey' : APIKEY,
+               }                
+                      
+    })
+   })
 }
 
 function resolveF2(data) {
