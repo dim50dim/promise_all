@@ -130,7 +130,26 @@ document.querySelector('.b-3').onclick = f3;
 let employeeEmail;
 
 function f4(){
+    const requestHeaders = new Headers();
+    requestHeaders.append("apikey", APIKEY);
 
+    fetch(URL + '/api/27/employee/random-email', {
+        headers: requestHeaders
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            employeeEmail = data['email'];
+            return  fetch(URL + '/api/27/employee/email?email=' + employeeEmail, {
+                headers: requestHeaders
+            });
+         })
+         .then(response => response.json())
+         .then(data => {
+            console.log(data);
+           document.querySelector('.out-4').innerHTML = data.result.name;
+         })
+          
 }
 
 document.querySelector('.b-4').onclick = f4;
