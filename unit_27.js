@@ -165,7 +165,25 @@ document.querySelector('.b-4').onclick = f4;
 let randomWorld;
 
 function f5(){
+    const requestHeaders = new Headers();
+    requestHeaders.append("apikey", APIKEY);
 
+    fetch(URL + '/api/27/gow/random-world', {
+        headers: requestHeaders
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            randomWorld = data['governor'];
+            return  fetch(URL + '/api/27/gow/world/' + randomWorld, {
+                headers: requestHeaders
+            });
+         })
+         .then(response => response.json())
+         .then(data => {
+            console.log(data);
+           document.querySelector('.out-5').innerHTML = data.result.name;
+         });
 }
 
 document.querySelector('.b-5').onclick = f5;
